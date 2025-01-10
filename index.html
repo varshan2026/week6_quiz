@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    
+    <style>
+        .option{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .quiz_container{
+            width: 40vw;
+        }
+        
+        .quiz{
+            margin-top: 55px;
+        }
+
+        .container{
+            padding: 30px;
+        }
+
+        .correct{
+            color: rgb(1, 151, 1);
+            display: none;
+        }
+
+        .wrong, .error{
+            color: rgb(255, 0, 0);
+            display: none;
+        }
+
+        button{
+            padding: 5px;
+            border: 1px solid black;
+            color: black;
+            background-color: white;
+            margin-top: 40px;
+        }
+
+        .score{
+            display: none;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz_container">
+            <div class="quiz">
+                <p>How many states are there in India?</p>
+                <div class="option">
+                    <input type="radio" name="option1" value="32">32
+                    <input type="radio" name="option1" value="28">28 
+                    <input type="radio" name="option1" value="35">35
+                    <input type="radio" name="option1" value="29">29
+                </div>
+                <p class="correct">You are correct !</p>
+                <p class="wrong">You are wrong !</p>
+            </div>
+            
+            <div class="quiz">
+                <p>Which planet is known as red planet ?</p>
+                <div class="option">
+                    <input type="radio" name="option2" value="Mars">Mars
+                    <input type="radio" name="option2" value="Venus">Venus
+                    <input type="radio" name="option2" value="Jupiter">Jupiter
+                    <input type="radio" name="option2" value="Earth">Earth
+                </div>
+                <p class="correct">You are correct !</p>
+                <p class="wrong">You are wrong !</p>
+            </div>
+
+            <div class="quiz">
+                <p>What is the capital of france ?</p>
+                <div class="option">
+                    <input type="radio" name="option3" value="Paris">Paris
+                    <input type="radio" name="option3" value="London">London
+                    <input type="radio" name="option3" value="Berlin">Berlin
+                    <input type="radio" name="option3" value="Italy">Italy
+                </div>
+                <p class="correct">You are correct !</p>
+                <p class="wrong">You are wrong !</p>
+            </div>
+
+            <div class="quiz">
+                <p>Which is the largest mammal on earth ?</p>
+                <div class="option">
+                    <input type="radio" name="option4" value="Elaphant">Elaphant
+                    <input type="radio" name="option4" value="Blue Whale">Bluewhale
+                    <input type="radio" name="option4" value="Giraffe">Giraffe
+                    <input type="radio" name="option4" value="cow">cow
+                </div>
+                <p class="correct">You are correct !</p>
+                <p class="wrong">You are wrong !</p>
+            </div>
+
+            <div class="quiz">
+                <p>How many seconds make one hour ?</p>
+                <div class="option">
+                    <input type="radio" name="option5" value="3600">3600
+                    <input type="radio" name="option5" value="6000">6000
+                    <input type="radio" name="option5" value="600">600
+                    <input type="radio" name="option5" value="360">360
+                </div>
+                <p class="correct">You are correct !</p>
+                <p class="wrong">You are wrong !</p>
+            </div>
+
+            <button id="submit" onclick="submitans()">Submit</button>
+            <p class="error">Please fill all the answer</p>
+            <p class="score">Your score is: </p>
+        </div>
+    </div>
+
+  <script>
+    
+    function submitans() {
+    const ans = ['28', 'Mars', 'Paris', 'Blue Whale', '3600'];
+
+    var allchecked = true; 
+    var scoreCount = 0;
+
+    var quizzes = document.querySelectorAll('.quiz'); 
+
+    quizzes.forEach(function (quiz, index) {
+        var selectedOption = quiz.querySelector("input[type='radio']:checked");
+        var correctMessage = quiz.querySelector('.correct');
+        var wrongMessage = quiz.querySelector('.wrong');
+
+
+        if (selectedOption) {
+            if (selectedOption.value === ans[index]) {
+                correctMessage.style.display = "block";
+                scoreCount++;
+            } else {
+                wrongMessage.style.display = "block";
+            }
+        } 
+        
+        else 
+        {
+            allchecked = false; 
+        }
+    });
+
+    var error = document.querySelector('.error');
+    var score = document.querySelector('.score');
+
+        if (!allchecked) {
+            error.style.display = 'block';
+        } else {
+            error.style.display = 'none';
+            score.style.display = 'block';
+            score.textContent = `Your score is: ${scoreCount} / ${ans.length}`;
+        }
+    }
+
+  </script>
+    
+</body>
+</html>
