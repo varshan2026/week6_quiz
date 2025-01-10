@@ -7,4 +7,4 @@ A dynamic and interactive quiz application built using **HTML**, **CSS**, and **
 - **JavaScript**: Logic for question display, answer validation, and score calculation.
 
 ## Live
-Link
+Link: https://varshan2026.github.io/week6_quiz/
